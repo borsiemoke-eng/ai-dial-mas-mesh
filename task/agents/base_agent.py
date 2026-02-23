@@ -174,7 +174,7 @@ class BaseAgent:
         if tool_message.custom_content and tool_message.custom_content.state:
             if agent_tool_history := tool_message.custom_content.state.get(TOOL_CALL_HISTORY_KEY):
                 if self.state.get(tool_name):
-                    self.state[tool_name].extend(agent_tool_history)
+                    self.state[tool_name][TOOL_CALL_HISTORY_KEY].extend(agent_tool_history)
                 else:
                     self.state[tool_name] = {
                         TOOL_CALL_HISTORY_KEY: agent_tool_history
